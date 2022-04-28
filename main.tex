@@ -1,0 +1,207 @@
+\documentclass[12pt]{article}
+\usepackage[left=2.5cm,top=2.0cm,right=2.5cm,bottom=3.0cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb, amsmath, amsbsy} % simbolitos
+\usepackage{longtable} % para tablas largas
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages} % Incluir PDF en documento en LATEX
+\usepackage{verbatim} % comentarios
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{multirow}
+\usepackage{afterpage}
+\usepackage{array,booktabs,ragged2e}
+%\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de algoritmos}
+\renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
+\renewcommand{\algorithmicensure}{\textbf{Salida:}}
+
+
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+% Estas lineas permiten romper los hipervinculos muy largos en las referencias!!!!
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{referencias.bib} % ARCHIVO DE BIBLIOGRAFÍA
+
+
+%\usepackage{url}
+\usepackage[bookmarks=true,breaklinks=true,bookmarksopen=false,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
+% Regla que define explicitamente que caracteres rompen los hipervinculos para separar las lineas
+%https://es.overleaf.com/11089898rhgykrqyqytx
+% Actualiza en automático la fecha de las citas de internet a la fecha de la compilación del documento
+\usepackage{datetime}
+\newdateformat{specialdate}{\twodigit{\THEDAY}-\twodigit{\THEMONTH}-\THEYEAR}
+%\newdateformat{specialdate}{\twodigit{\THEDAY}-\THEYEAR}
+\date{\specialdate\today}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.25mm}}
+
+
+% CONSTANTES NECESARIAS PARA EL DOCUMENTO ---> MODIFIQUEN A SU CRITERIO
+%\newcommand{\matricula}           {1430044}  %SU MATRICULA
+\newcommand{\elola}           {el}  %Hombres cambien LA por EL
+\newcommand{\OA}           {o}  %Hombres cambien A por O
+\newcommand{\ncuatrimestre}{septiembre-diciembre 2017}
+\newcommand{\nproyecto}           {Nombre del proyecto}
+% NOTA: Dos diagonales juntas (\\) indican un saldo de linea. En este caso particular hay 2 (el titulo se ajusta a tres lineas, porque es muy largo. Hacer las adecuaciones pertinentes
+\newcommand{\nproyectoheader}     {Nombre del proyecto}
+\newcommand{\nalumno}             {Jesús Antonio Luna Alvarez}
+\newcommand{\ncarrera}            {Ingeniería Mecatrónica}
+\newcommand{\nasesorinstitucional}{Dr. Marco Aurelio Nuño Maganda}
+\newcommand{\nasesorempresaria}   {Dr. Said Polanco Martagón}
+\newcommand{\organismoreceptor}   {Aptiv de México, S. A. de C. V.}
+\newcommand{\fecha}               {Mayo de 2019}
+\newcommand{\separacionCorta}{0.0cm}
+\newcommand{\separacionLarga}{0.5cm}
+
+\usepackage[overload]{textcase}
+\newcommand{\iemph}[1]{\MakeTextUppercase{#1}}
+
+\pagestyle{fancy}
+\headheight 35pt
+\fancyhead{} % Clear all header fields
+%\fancyhead[L]{\includegraphics[height=1.5cm]{CGUTP2_2019.jpg}}%
+\fancyhead[C]{\nproyectoheader}%
+%\fancyhead[R]{\includegraphics[height=1.5cm]{LogoUPV_2019.png}}%
+\fancyfoot[R]{\thepage} % Clear all footer fields 
+\fancyfoot[C]{}
+\fancyfoot[L]{}
+
+\DefineBibliographyStrings{english}{%
+  references = {Referencias},% replace "references" with "bibliography"  for `book`/`report`
+}
+
+\addto\captionsenglish{%
+  \renewcommand{\figurename}{Figura}%
+  \renewcommand{\tablename}{Cuadro}%
+} 
+
+\usepackage{wallpaper}
+ 
+ 
+ 
+\begin{document}
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA 1 - PORTADA
+\setcounter{page}{1}
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\begin{center}
+
+\begin{tabular}{cp{8cm}c}
+\includegraphics[height=2.25cm]{imgs/CGUTP2.png} & 
+& \includegraphics[height=2.25cm]{imgs/LogoUPV_2019.png}   \\
+\end{tabular}
+
+\Large{ \textbf{UNIVERSIDAD POLITÉCNICA DE VICTORIA} }
+\vspace{0.5cm}
+\hrule
+\vspace{0.1cm} 
+\hrule
+\vspace{0.5cm}
+
+
+%\HRule \\[\separacionCorta]
+\textbf{\nproyecto} \\[\separacionLarga]
+%\Large \textbf{TESINA}
+%\HRule \\[\separacionLarga]
+\vspace{0.5cm}
+REPORTE DE ESTANCIA II \\  % <-------- Cambiar el número de estancia
+\vspace{1.0cm}
+Presentado por: \\[\separacionCorta]
+\textbf{\nalumno}\\
+\vspace{0.5cm}
+Alumno de la carrera de: \\[\separacionCorta]
+\textbf{\ncarrera} \\[\separacionLarga]
+\vspace{1.0cm}
+Asesor institucional: \\[\separacionCorta]
+\textbf{\nasesorinstitucional} \\[\separacionCorta]
+\vspace{0.5cm}
+Asesor empresarial: \\[\separacionCorta]
+\textbf{\nasesorempresaria} \\[\separacionCorta]
+\vspace{0.5cm}
+Organismo receptor: \\[\separacionCorta]
+\textbf{\organismoreceptor} \\[\separacionLarga]
+\vspace{0.5cm}
+
+\end{center}
+\begin{flushright}
+Ciudad Victoria, Tamaulipas, \fecha
+\end{flushright}
+
+\HRule 
+%-----------------------------------------------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA II - RESUMEN EN ESPAÑOL Y EN INGLÉS
+
+\clearpage
+\section*{\centering Resumen}
+\addcontentsline{toc}{section}{Resumen}
+\input{secciones/01Resumen.tex}
+
+\section*{\centering Abstract}
+\addcontentsline{toc}{section}{Abstract}
+\input{secciones/02Abstract.tex}\\
+\\
+\textbf{Palabras clave:} Red Neuronal Artificial, Clasificador, Segmentación, Puntos Clave, Regiones de Interés.
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA III - INDICE
+
+\clearpage
+\addcontentsline{toc}{section}{Índice}
+\renewcommand\contentsname{Índice}
+\tableofcontents
+
+%-----------------------------------------------------------------------------------------------------------------
+% CAPITULOS
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\input{secciones/03Introduccion.tex}
+
+\clearpage
+\input{secciones/04MarcoTeorico.tex}
+
+\clearpage
+\input{secciones/05JustificacionObjetivos.tex}
+
+\clearpage
+\input{secciones/06DesarrolloDelProyecto.tex}
+
+\clearpage
+\input{secciones/07Resultados.tex}
+
+\clearpage
+\input{secciones/08Conclusiones.tex}
+
+%-----------------------------------------------------------------------------------------------------------------
+% REFERENCIAS
+
+
+\clearpage
+%Let's cite! The Einstein's journal paper \cite{dirac} and the Dirac's 
+%book \cite{einstein} are physics related items. 
+
+%\Urlmuskip=0mu plus 1mu\relax
+\addcontentsline{toc}{section}{Referencias} 
+\printbibliography
+
+\end{document}
